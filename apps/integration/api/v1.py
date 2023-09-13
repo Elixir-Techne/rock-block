@@ -17,7 +17,7 @@ router = APIRouter(
 logger = logging.getLogger(__name__)
 
 
-@router.post("/", response_model=IntegrationSchema)
+@router.post("/")
 def create_integrations(payload: dict, db: Session = Depends(get_db), ):
     logger.info("Integration create API called with data: %s", payload)
     integration_instance = Integration(
@@ -28,7 +28,7 @@ def create_integrations(payload: dict, db: Session = Depends(get_db), ):
     db.commit()
     db.refresh(integration_instance)
     logger.info("Integration created successfully")
-    return integration_instance
+    return "ok"
 
 
 @router.get("/", response_model=List[IntegrationSchema])
