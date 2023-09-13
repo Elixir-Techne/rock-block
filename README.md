@@ -11,7 +11,7 @@
 ## Run Server
 - **Create Virtual environment**
 
-    `$ python3 -m venv /path/to/new/virtual/environment`
+  `$ python3 -m venv /path/to/new/virtual/environment`
 
   `$ source /path/to/new/virtual/environment/bin/activate`
 
@@ -36,6 +36,26 @@
     - `Open swagger URL http://127.0.0.1:8000`
 
 
-- **Running Testcases**
+# Update Server AWS
+- **Connect to AWS Server**
 
-    `$ pytest -v`
+  `$ ssh -i "rockblock-integration.pem" ubuntu@ec2-16-171-76-6.eu-north-1.compute.amazonaws.com`
+
+
+- **Update Code files**
+ 
+  `$ sudo -f`
+
+   `$ cd /home/ubuntu/rockblock_integration`
+
+
+- **Rebuild Docker**
+ 
+  `$ docker-compose down`
+ 
+  `$ docker-compose build`
+
+
+- **Start Docker**
+ 
+  `$ docker-compose up -d`
